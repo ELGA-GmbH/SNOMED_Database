@@ -120,4 +120,4 @@ To run this project using Eclipse:
 > - `LOAD DATA LOCAL INFILE` is enabled in both MySQL server configuration and JDBC driver.
 
 ## Acknowledgments
-[SNOMED International] (https://www.snomed.org/)
+[SNOMED International](https://www.snomed.org/)
