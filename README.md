@@ -79,4 +79,45 @@ Swiss Extension/
             ├── der2_cRefset_LanguageFull-it-ch_CH1000195_20241207.txt
             └── der2_cRefset_LanguageFull-en_CH1000195_20241207.txt
 ```
-Note: Some optional imports (e.g., simple refsets, extended maps) are commented out in the code and can be enabled as needed.
+**Note:** Some optional imports (e.g., simple refsets, extended maps) are commented out in the code and can be enabled as needed.
+
+
+## How to Run (Eclipse IDE)
+To run this project using Eclipse:
+
+1. **Import the project into Eclipse**
+   - Open Eclipse.
+   - Go to `File` > `Import...` > `General` > `Existing Projects into Workspace` > `Next`.
+   - Browse to the folder containing this project.
+   - Click `Finish`.
+
+2. **Add the MySQL JDBC driver to the build path**
+   - Download the [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) (JAR file).
+   - Right-click the project in the Project Explorer and select `Build Path` > `Configure Build Path...`.
+   - Under the `Libraries` tab, click `Add External JARs...` and select the downloaded `mysql-connector-java-x.x.x.jar`.
+
+3. **Edit the configuration if needed**
+   - In the class `CreateDatabaseAndImportData.java`, update the following variables to match your system:
+     ```java
+     static String ReleaseFilePath = "C:\\Path\\To\\InternationalEdition";
+     static String ReleaseFilePathCH = "C:\\Path\\To\\SwissExtension";
+     static String ReleaseDate = "20250101";
+     static String ReleaseDateCH = "CH1000195_20241207";
+     ```
+
+4. **Run the program**
+   - Right-click the class `CreateDatabaseAndImportData.java`.
+   - Select `Run As` > `Java Application`.
+
+5. **Verify the result**
+   - The MySQL database `SCT:CH_Dec24` should now be created.
+   - Tables will be created and populated with SNOMED CT data.
+   - The Eclipse console will show logs confirming successful steps.
+
+> **Note:** Ensure that:
+> - MySQL is running locally.
+> - The user has privileges to create/drop databases.
+> - `LOAD DATA LOCAL INFILE` is enabled in both MySQL server configuration and JDBC driver.
+
+## Acknowledgments
+[SNOMED International] (https://www.snomed.org/)
