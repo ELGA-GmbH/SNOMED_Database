@@ -8,13 +8,15 @@ public class CreateDatabaseAndImportData {
 	// Driver needed to connect to the SNOMED database
 	public static Connection conn = null;
 	// TODO adapt
-	static String ReleaseFilePath= "C:\\\\Users\\\\someuser\\\\Downloads\\\\SnomedCT_InternationalRF2_PRODUCTION_20250501T120000Z"; // Verzeichnis des entpackten International Releases
+	static String ReleaseFilePath= "C:\\\\Users\\\\someuser\\\\Downloads\\\\SnomedCT_InternationalRF2_PRODUCTION_20250601T120000Z"; // Verzeichnis des entpackten International Releases
 	// TODO adapt
-	static String ReleaseFilePathCH= "C:\\\\Users\\\\someuser\\\\Downloads\\\\SnomedCT_ManagedServiceAT_PRODUCTION_AT1000234_20250215T120000Z"; // Verzeichnis der entpackten Austrian Extension
+	static String ReleaseFilePathCH= "C:\\\\Users\\\\someuser\\\\Downloads\\\\SnomedCT_ManagedServiceAT_DAILYBUILD_BETA_AT1000234_20250815T120000Z"; // Verzeichnis der entpackten Austrian Extension
 	// TODO adapt
-	static String ReleaseDate="20250501"; // Release Date vom International Release (siehe im entpackten Verzeichnis Readme_en_20250501.txt -> da ist das datum im dateinamen)
+	static String ReleaseDate="20250601"; // Release Date vom International Release (siehe im entpackten Verzeichnis Readme_en_20250501.txt -> da ist das datum im dateinamen)
 	// TODO adapt
-	static String ReleaseDateCH="AT1000234_20250215"; // Release Date von der AT Extension (siehe im entpackten Verzeichnis Snapshot\Refset\Content\der2_cRefset_AssociationSnapshot_AT1000234_20250215.txt -> da ist AT1000234_20250215 das datum)
+	static String ReleaseDateCH="AT1000234_20250815"; // Release Date von der AT Extension (siehe im entpackten Verzeichnis Snapshot\Refset\Content\der2_cRefset_AssociationSnapshot_AT1000234_20250215.txt -> da ist AT1000234_20250215 das datum)
+	// TODO adapt
+	static String fullOrSnapshot="Snapshot"; // Full or Snapshot
 
 	    public static void main(String[] args) {
 	        // Datenbankverbindung konfigurieren
@@ -257,7 +259,7 @@ public class CreateDatabaseAndImportData {
 //	            System.out.println(importExtendedMapRefsetsIntEdQuery);
 	            
 	            //Import of the Swiss Extension
-	            String importConceptsCHdQuery = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Concept_Full_"+ReleaseDateCH+".txt'\r\n"
+	            String importConceptsCHdQuery = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Terminology\\\\sct2_Concept_" + fullOrSnapshot + "_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_concept`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
@@ -267,7 +269,7 @@ public class CreateDatabaseAndImportData {
 	            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" concepts successful!");
 
 
-	            String importDescriptionDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-de_"+ReleaseDateCH+".txt'\r\n"
+	            String importDescriptionDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Terminology\\\\sct2_Description_" + fullOrSnapshot + "-de_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_description`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
@@ -297,8 +299,7 @@ public class CreateDatabaseAndImportData {
 // 	            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" italian descriptions successful!");
 
 
-	            
-	            String importDescriptionEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-en_"+ReleaseDateCH+".txt'\r\n"
+	            String importDescriptionEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Terminology\\\\sct2_Description_" + fullOrSnapshot + "-en_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_description`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
@@ -307,8 +308,8 @@ public class CreateDatabaseAndImportData {
 //	            System.out.println(importDescriptionEnCHQuery);
 	            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" english descriptions successful!");
 
-	            
-	            String importRelationshipCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Relationship_Full_"+ReleaseDateCH+".txt'\r\n"
+
+	            String importRelationshipCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Terminology\\\\sct2_Relationship_" + fullOrSnapshot + "_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_relationship`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
@@ -326,7 +327,7 @@ public class CreateDatabaseAndImportData {
 //	            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refSetId`,`referencedComponentId`);";
 //	            statement.executeUpdate(importSimpleRefsetCHQuery);
 
-	            String importLanguageRefsetsDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-de_"+ReleaseDateCH+".txt'\r\n"
+	            String importLanguageRefsetsDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + fullOrSnapshot + "-de_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_refset_Language`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
@@ -356,8 +357,7 @@ public class CreateDatabaseAndImportData {
 // 	            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" italian language refset successful!");
 
 
-	            
-	            String importLanguageRefsetsEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-en_"+ReleaseDateCH+".txt'\r\n"
+	            String importLanguageRefsetsEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\" + fullOrSnapshot + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + fullOrSnapshot + "-en_"+ReleaseDateCH+".txt'\r\n"
 	            		+ "INTO TABLE `full_refset_Language`\r\n"
 	            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 	            		+ " IGNORE 1 LINES\r\n"
