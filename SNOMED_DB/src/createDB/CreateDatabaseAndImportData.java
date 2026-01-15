@@ -380,12 +380,18 @@ public class CreateDatabaseAndImportData {
 				String createIndexSQL2 = "CREATE INDEX idx_fd_conceptId ON full_description(conceptId);";
 				String createIndexSQL3 = "CREATE INDEX idx_fc_id ON full_concept(id);";
 				String createIndexSQL4 = "CREATE INDEX idx_fr_referencedComponentId ON full_refset_Language(referencedComponentId);";
+				String createIndexSQL5 = "CREATE INDEX idx_fd_concept_lang_term_eff ON full_description (conceptId, languageCode, term (200), effectiveTime);";
+				String createIndexSQL6 = "CREATE INDEX idx_fc_id_eff ON full_concept (id, effectiveTime);";
+				// String createIndexSQL7 = "CREATE INDEX idx_tmp_pairs_concept_term_lang ON tmp_pairs (conceptId, term(200), languageCode);";
 				// Indexe auf den relevanten Spalten erstellen
 				try (Statement stmt = connection.createStatement()) {
 					stmt.executeUpdate(createIndexSQL1);
 					stmt.executeUpdate(createIndexSQL2);
 					stmt.executeUpdate(createIndexSQL3);
 					stmt.executeUpdate(createIndexSQL4);
+					stmt.executeUpdate(createIndexSQL5);
+					stmt.executeUpdate(createIndexSQL6);
+					// stmt.executeUpdate(createIndexSQL7);
 				}
 
 				System.out.println("Indexe wurden hinzugefügt.");
