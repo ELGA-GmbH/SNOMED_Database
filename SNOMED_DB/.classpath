@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/21.0.10-win32-x86_64"/>
 	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Pero Grgic/Desktop/eHS/JAR/mysql-connector-j-9.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Pero Grgic/eclipse/JAR/postgresql-42.7.5.jar"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="lib" path="c:/Users/gleonhartsberger/.m2/repository/com/mysql/mysql-connector-j/9.2.0/mysql-connector-j-9.2.0.jar">
 		<attributes>
+			<attribute name="maven.artifactId" value="mysql-connector-j"/>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="9.2.0"/>
+			<attribute name="maven.groupId" value="com.mysql"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/gleonhartsberger/.m2/repository/com/google/protobuf/protobuf-java/4.29.0/protobuf-java-4.29.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="protobuf-java"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="4.29.0"/>
+			<attribute name="maven.groupId" value="com.google.protobuf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/gleonhartsberger/.m2/repository/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="postgresql"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="42.7.5"/>
+			<attribute name="maven.groupId" value="org.postgresql"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/gleonhartsberger/.m2/repository/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="checker-qual"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.scope" value="runtime"/>
+			<attribute name="maven.version" value="3.48.3"/>
+			<attribute name="maven.groupId" value="org.checkerframework"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/gleonhartsberger/.m2/repository/org/mariadb/jdbc/mariadb-java-client/3.5.8/mariadb-java-client-3.5.8.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="mariadb-java-client"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="3.5.8"/>
+			<attribute name="maven.groupId" value="org.mariadb.jdbc"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

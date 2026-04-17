@@ -9,21 +9,21 @@ public class Create_AT_DB {
 		
 		// Driver needed to connect to the SNOMED database
 		public static Connection conn = null;
-		static String ReleaseFilePath= "PATH_TO_YOUR_INTERNATIONAL_EDITION";
-		static String ReleaseFilePathExtension= "PATH_TO_YOUR_EXTENSION";
-		static String ReleaseDate="20260401";
-		static String ReleaseDateCH="AT1000234_20260315";
+		static String ReleaseFilePath= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_InternationalRF2_PRODUCTION_20251101T120000Z";
+		static String ReleaseFilePathExtension= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_ManagedServiceAT_PRODUCTION_AT1000234_20251215T120000Z";
+		static String ReleaseDate="20251101";
+		static String ReleaseDateCH="AT1000234_20251215";
 
 		    public static void main(String[] args) {
 		        // Datenbankverbindung konfigurieren
-		        String dbName = "SCT:AT_March25";
+		        String dbName = "SCT";
 		        String jdbcDriver = "com.mysql.cj.jdbc.Driver";
 		    	
 		    	
 		    	//Credential for the connection
 		    	String dbUser = "root";
-		    	String dbPassword = "";
-		    	String dbURL = "jdbc:mysql://localhost/";
+		    	String dbPassword = "root";
+		    	String dbURL = "jdbc:mariadb://localhost:3306/";
 		    	String multiQueries="?allowMultiQueries=true";
 		    	String allowLoadLocalInfile= "allowLoadLocalInfile=true";
 
