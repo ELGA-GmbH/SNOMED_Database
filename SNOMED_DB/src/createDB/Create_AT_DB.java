@@ -78,7 +78,7 @@ public class Create_AT_DB {
 		            		+ "    `conceptId` BIGINT NOT NULL DEFAULT  0,\r\n"
 		            		+ "    `languageCode` VARCHAR (3) NOT NULL DEFAULT '',\r\n"
 		            		+ "    `typeId` BIGINT NOT NULL DEFAULT  0,\r\n"
-		            		+ "    `term` TEXT NOT NULL,\r\n"
+		            		+ "    `term` TEXT NOT NULL COLLATE utf8mb4_bin,\r\n"
 		            		+ "    `caseSignificanceId` BIGINT NOT NULL DEFAULT  0,\r\n"
 		            		+ "    PRIMARY KEY (`id`,`effectiveTime`))\r\n"
 		            		+ "    ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;";
@@ -201,7 +201,7 @@ public class Create_AT_DB {
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`definitionStatusId`);";
 		            statement.executeUpdate(importConceptsIntEdQuery);
 //		            System.out.println(importConceptsIntEdQuery);
-		            System.out.println("Import SNOMED Interntaional Edition Release "+ReleaseDate+" concepts successful!");
+		            System.out.println("Import SNOMED International Edition Release "+ReleaseDate+" concepts successful!");
 
 		            
 		            String importDescriptionIntEdQuery = "LOAD DATA LOCAL INFILE '"+ReleaseFilePath+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-en_INT_"+ReleaseDate+".txt'\r\n"
@@ -211,7 +211,7 @@ public class Create_AT_DB {
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`conceptId`,`languageCode`,`typeId`,`term`,`caseSignificanceId`);";
 		            statement.executeUpdate(importDescriptionIntEdQuery);
 //		            System.out.println(importDescriptionIntEdQuery);
-		            System.out.println("Import SNOMED Interntaional Edition Release "+ReleaseDate+" descriptions successful!");
+		            System.out.println("Import SNOMED International Edition Release "+ReleaseDate+" descriptions successful!");
 
 
 		            
@@ -222,7 +222,7 @@ public class Create_AT_DB {
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`sourceId`,`destinationId`,`relationshipGroup`,`typeId`,`characteristicTypeId`,`modifierId`);";
 		            statement.executeUpdate(importRelationshipIntEdQuery);
 //		            System.out.println(importRelationshipIntEdQuery);
-		            System.out.println("Import SNOMED Interntaional Edition Release "+ReleaseDate+" relationships successful!");
+		            System.out.println("Import SNOMED International Edition Release "+ReleaseDate+" relationships successful!");
 
 
 //		            The international Edition does not have a simple refset
@@ -242,7 +242,7 @@ public class Create_AT_DB {
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refsetId`,`referencedComponentId`,`acceptabilityId`);";
 		            statement.executeUpdate(importLanguageRefsetsIntEdQuery);
 //		            System.out.println(importLanguageRefsetsIntEdQuery);
-		            System.out.println("Import SNOMED Interntaional Edition Release "+ReleaseDate+" language refsets successful!");
+		            System.out.println("Import SNOMED International Edition Release "+ReleaseDate+" language refsets successful!");
 
 		            
 //		            TODO: beim Ausführen macht mapGroup ein Problem. 
@@ -379,6 +379,10 @@ public class Create_AT_DB {
 					String createIndexSQL5 = "CREATE INDEX idx_fd_concept_lang_term_eff ON full_description (conceptId, languageCode, term (200), effectiveTime);";
 					String createIndexSQL6 = "CREATE INDEX idx_fc_id_eff ON full_concept (id, effectiveTime);";
 					String createIndexSQL7 = "CREATE INDEX idx_fd_active_lang ON full_description (active, languageCode, conceptId);";
+					String createIndexSQL8 = "CREATE INDEX idx_frl_refsetId ON full_refset_Language(refsetId);";
+					String createIndexSQL9 = "CREATE INDEX idx_frl_refset_component_eff ON full_refset_Language(refsetId, referencedComponentId, effectiveTime);";
+					String createIndexSQL10 = "CREATE INDEX idx_fd_id ON full_description(id);";
+
 				
 					// Indexe auf den relevanten Spalten erstellen
 					try (Statement stmt = connection.createStatement()) {
@@ -389,6 +393,9 @@ public class Create_AT_DB {
 						stmt.executeUpdate(createIndexSQL5);
 						stmt.executeUpdate(createIndexSQL6);
 						stmt.executeUpdate(createIndexSQL7);
+						stmt.executeUpdate(createIndexSQL8);
+						stmt.executeUpdate(createIndexSQL9);
+						stmt.executeUpdate(createIndexSQL10);
 					}
 
 					System.out.println("Indexe wurden hinzugefügt.");
