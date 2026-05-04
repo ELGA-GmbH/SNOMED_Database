@@ -23,12 +23,12 @@ public class Create_AT_DB {
 		
 		// Driver needed to connect to the SNOMED database
 		public static Connection conn = null;
-		static String ReleaseFilePath= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_InternationalRF2_PRODUCTION_20251101T120000Z";
+		static String ReleaseFilePath= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_InternationalRF2_PRODUCTION_20260301T120000Z";
 		static String ReleaseFileTypeSI = ReleaseFileType.FULL.getReleaseFileType();
-		static String ReleaseFilePathExtension= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_ManagedServiceAT_PRODUCTION_AT1000234_20251215T120000Z";
+		static String ReleaseFilePathExtension= "C:\\\\Users\\\\someuser\\\\Downloads\\\\2026_03\\\\SnomedCT_ManagedServiceAT_PRODUCTION_AT1000234_20260315T120000Z";
 		static String ReleaseFileTypeExtension = ReleaseFileType.FULL.getReleaseFileType();
-		static String ReleaseDate="20251101";
-		static String ReleaseDateCH="AT1000234_20251215";
+		static String ReleaseDate="20260301";
+		static String ReleaseDateAT="AT1000234_20260315";
 
 		    public static void main(String[] args) {
 		        // Datenbankverbindung konfigurieren
@@ -270,117 +270,117 @@ public class Create_AT_DB {
 //		            statement.executeUpdate(importExtendedMapRefsetsIntEdQuery);
 //		            System.out.println(importExtendedMapRefsetsIntEdQuery);
 		            
-		            //Import of the Swiss Extension
-		            String importConceptsCHdQuery = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Concept_" + ReleaseFileTypeExtension + "_"+ReleaseDateCH+".txt'\r\n"
+		            //Import of the Austrian Extension
+		            String importConceptsCHdQuery = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Concept_" + ReleaseFileTypeExtension + "_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_concept`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`definitionStatusId`);";
 		            statement.executeUpdate(importConceptsCHdQuery);
 //		            System.out.println(importConceptsCHdQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" concepts successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" concepts successful!");
 
 		            
-		            String importDescriptionDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Description_" + ReleaseFileTypeExtension + "-de_"+ReleaseDateCH+".txt'\r\n"
+		            String importDescriptionDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Description_" + ReleaseFileTypeExtension + "-de_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_description`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`conceptId`,`languageCode`,`typeId`,`term`,`caseSignificanceId`);";
 		            statement.executeUpdate(importDescriptionDeCHQuery);
 //		            System.out.println(importDescriptionDeCHQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" german descriptions successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" german descriptions successful!");
 
 		            
-//		            String importDescriptionFrCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-fr-ch_"+ReleaseDateCH+".txt'\r\n"
+//		            String importDescriptionFrCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-fr-ch_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_description`\r\n"
 //		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
 //		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`conceptId`,`languageCode`,`typeId`,`term`,`caseSignificanceId`);";
 //		            statement.executeUpdate(importDescriptionFrCHQuery);
 ////		            System.out.println(importDescriptionFrCHQuery);
-//		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" french descriptions successful!");
+//		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" french descriptions successful!");
 
 		            
-//		            String importDescriptionItCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-it-ch_"+ReleaseDateCH+".txt'\r\n"
+//		            String importDescriptionItCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Terminology\\\\sct2_Description_Full-it-ch_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_description`\r\n"
 //		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
 //		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`conceptId`,`languageCode`,`typeId`,`term`,`caseSignificanceId`);";
 //		            statement.executeUpdate(importDescriptionItCHQuery);
 ////		            System.out.println(importDescriptionItCHQuery);
-//		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" italian descriptions successful!");
+//		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" italian descriptions successful!");
 
 		            
-		            String importDescriptionEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Description_" + ReleaseFileTypeExtension + "-en_"+ReleaseDateCH+".txt'\r\n"
+		            String importDescriptionEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Description_" + ReleaseFileTypeExtension + "-en_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_description`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`conceptId`,`languageCode`,`typeId`,`term`,`caseSignificanceId`);";
 		            statement.executeUpdate(importDescriptionEnCHQuery);
 //		            System.out.println(importDescriptionEnCHQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" english descriptions successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" english descriptions successful!");
 
 		            
-		            String importRelationshipCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Relationship_" + ReleaseFileTypeExtension + "_"+ReleaseDateCH+".txt'\r\n"
+		            String importRelationshipCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Terminology\\\\sct2_Relationship_" + ReleaseFileTypeExtension + "_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_relationship`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`sourceId`,`destinationId`,`relationshipGroup`,`typeId`,`characteristicTypeId`,`modifierId`);";
 		            statement.executeUpdate(importRelationshipCHQuery);
 //		            System.out.println(importRelationshipCHQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" relationship successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" relationship successful!");
 
 		            
 		            //The swiss extension does not contain a simple refset
-//		            String importSimpleRefsetCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Content\\\\der2_Refset_SimpleFull_INT_"+ReleaseDateCH+".txt'\r\n"
+//		            String importSimpleRefsetCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Content\\\\der2_Refset_SimpleFull_INT_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_refset_simple`\r\n"
 //		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
 //		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refSetId`,`referencedComponentId`);";
 //		            statement.executeUpdate(importSimpleRefsetCHQuery);
 		            
-		            String importLanguageRefsetsDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + ReleaseFileTypeExtension + "-de_"+ReleaseDateCH+".txt'\r\n"
+		            String importLanguageRefsetsDeCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + ReleaseFileTypeExtension + "-de_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_refset_Language`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refsetId`,`referencedComponentId`,`acceptabilityId`);";
 		            statement.executeUpdate(importLanguageRefsetsDeCHQuery);
 //		            System.out.println(importLanguageRefsetsDeCHQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" german language refset successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" german language refset successful!");
 
 		            
-//		            String importLanguageRefsetsFrCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-fr-ch_"+ReleaseDateCH+".txt'\r\n"
+//		            String importLanguageRefsetsFrCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-fr-ch_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_refset_Language`\r\n"
 //		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
 //		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refsetId`,`referencedComponentId`,`acceptabilityId`);";
 //		            statement.executeUpdate(importLanguageRefsetsFrCHQuery);
 ////		            System.out.println(importLanguageRefsetsFrCHQuery);
-//		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" french language refset successful!");
+//		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" french language refset successful!");
 	//
 //		            
-//		            String importLanguageRefsetsItCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-it-ch_"+ReleaseDateCH+".txt'\r\n"
+//		            String importLanguageRefsetsItCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Language\\\\der2_cRefset_LanguageFull-it-ch_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_refset_Language`\r\n"
 //		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
 //		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refsetId`,`referencedComponentId`,`acceptabilityId`);";
 //		            statement.executeUpdate(importLanguageRefsetsItCHQuery);
 ////		            System.out.println(importLanguageRefsetsItCHQuery);
-//		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" italian language refset successful!");
+//		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" italian language refset successful!");
 
 		            
-		            String importLanguageRefsetsEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + ReleaseFileTypeExtension + "-en_"+ReleaseDateCH+".txt'\r\n"
+		            String importLanguageRefsetsEnCHQuery= "LOAD DATA LOCAL INFILE '"+ReleaseFilePathExtension+"\\\\" + ReleaseFileTypeExtension + "\\\\Refset\\\\Language\\\\der2_cRefset_Language" + ReleaseFileTypeExtension + "-en_"+ReleaseDateAT+".txt'\r\n"
 		            		+ "INTO TABLE `full_refset_Language`\r\n"
 		            		+ "LINES TERMINATED BY '\\r\\n'\r\n"
 		            		+ " IGNORE 1 LINES\r\n"
 		            		+ "(`id`,`effectiveTime`,`active`,`moduleId`,`refsetId`,`referencedComponentId`,`acceptabilityId`);";
 		            statement.executeUpdate(importLanguageRefsetsEnCHQuery);
 //		            System.out.println(importLanguageRefsetsEnCHQuery);
-		            System.out.println("Import Swiss Extension Release "+ReleaseDateCH+" english language refset successful!");
+		            System.out.println("Import Austrian Extension Release "+ReleaseDateAT+" english language refset successful!");
 
 		            
 		            //The swiss extension does not contain a map
-//		            String importExtendedMapRefsetsIntEdQueryCH = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Map\\\\der2_iisssccRefset_ExtendedMapFull_INT_"+ReleaseDateCH+".txt'\r\n"
+//		            String importExtendedMapRefsetsIntEdQueryCH = "LOAD DATA LOCAL INFILE '"+ReleaseFilePathCH+"\\\\Full\\\\Refset\\\\Map\\\\der2_iisssccRefset_ExtendedMapFull_INT_"+ReleaseDateAT+".txt'\r\n"
 //		            		+ "INTO TABLE `full_refset_Language`\r\n"
 //		            		+ "LINES TERMINATED BY '\\\r\\\\n'\r\n"
 //		            		+ " IGNORE 1 LINES\r\n"
